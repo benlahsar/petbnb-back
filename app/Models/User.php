@@ -19,10 +19,27 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'nom', 
+        'email', 
+        'mot_de_passe', 
+        'sexe', 
+        'adresse', 
+        'role' 
     ];
+    public function demandesAdoption()
+    {
+        return $this->hasMany(DemandeAdoption::class);
+    }
+
+    public function animal()
+    {
+        return $this->hasOne(Animal::class);
+    }
+
+    public function listing()
+    {
+        return $this->hasOne(Listing::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
